@@ -1,19 +1,32 @@
 <html>
   <head>
+   
   </head>
 
   <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="countdown/js/countdown.js"></script>
+    <link rel="stylesheet" type="text/css" href="countdown/css/countdown" />
+    <div class="countdown" data-date="2022-01-01">Test</div>
+    
     <script>
       $(function() { 
         var h2Element = $('h2');
         
         var button = $('#button');
         button.click(function(){
-          var detailInput = $('#detail');
+          var detailInput = $('#detail'); //Pulls 'detail input off page'
           var detailInputValue = detailInput.val();
-          console.log(detailInputValue);
+          var fact = {
+            "fact" : {
+              "details" : detailInputValue
+            } 
+          };
+          // Save to API
+          $.post( "http://www.catfact.info/api/v1/facts.json", fact, function( data ) {
+              console.log(data);
+          });
+
         });
 
         h2Element.click(function() {
@@ -23,6 +36,7 @@
           });
 
         });
+
       });
 
     </script>
