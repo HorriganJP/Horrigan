@@ -34,13 +34,13 @@ class Image
       @image[row - 1][col] = 1 unless row == 0
       
       #bottom 
-      @image[row + 1][col] = 1 unless row + 1 >= length
+      @image[row + 1][col] = 1 unless @image.length-1
        
       #left  
       @image[row][col - 1] = 1 unless col == 0 # - 1
       
       #right 
-      @image[row][col + 1] = 1 unless col + 1 == width
+      @image[row][col + 1] = 1 unless @image[0].length-1
     end
     output_image
   end
@@ -48,9 +48,9 @@ class Image
 end
 
 image = Image.new([
-[1, 0, 0, 0], # [row, col]
-[0, 0, 0, 0], # [1, 1]
-[0, 0, 0, 0], # [2, 3]
+[0, 0, 0, 0], # [row, col]
+[0, 1, 0, 0], # [0, 0]
+[0, 0, 0, 0], 
 [0, 0, 0, 1],
 ])
 
